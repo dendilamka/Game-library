@@ -1,0 +1,62 @@
+void gotoxy(int x, int y)
+{
+    COORD ord;
+    ord.X = x;
+    ord.Y = y;
+
+    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), ord);
+}
+
+int MainMenu()
+{
+    ::system("cls");
+
+    gotoxy(1,2);
+
+    std::cout << " Game-Library Database Application ";
+
+    gotoxy(1,4);
+
+    std::cout << "***********************************";
+
+    gotoxy(1,5);
+
+    std::cout << "*     1. Insert the game data     *";
+
+    gotoxy(1,6);
+
+    std::cout << "*     2. Edit the game Data       *";
+
+    gotoxy(1,7);
+
+    std::cout << "*     3. View the game data       *";
+
+    gotoxy(1,8);
+
+    std::cout << "*     4. Delete the game data     *";
+
+    gotoxy(1,9);
+
+    std::cout << "*     5. Quit a program           *\n";
+
+    gotoxy(1,10);
+
+    std::cout << "***********************************\n\n";
+
+    gotoxy(1,12);
+
+    std::cout << "Your selection: ";
+
+    int m = -1;
+
+    std::cin >> m;
+
+    gotoxy(1,11);
+    if(m > 5 or m < 1){
+        std::cout << "Invalid Entry, you have to use(1-5)!";
+        return MainMenu();
+    }
+        
+    return m;
+
+}
