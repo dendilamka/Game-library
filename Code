@@ -19,6 +19,120 @@ public:
 
 };
 
+struct Games
+{
+    static const int Max_size = 100;
+
+    char m_fileName[1000];
+
+    int m_nMaxGames;
+
+    Game m_gameList[Max_size];
+
+    Games(const char *filename)
+    {
+        m_nMaxGames = 0;
+
+        strcpy(m_fileName, filename);
+    }
+
+    void Add_data(const char *name, int status, const char *type)
+    {
+        int pos = m_nMaxGames;
+
+        strcpy(m_gameList[pos].name,name);
+
+        strcpy(m_gameList[pos].type,type);
+
+        m_gameList[pos].status = status;
+
+        m_nMaxGames++;
+
+        Write_data();
+    }
+
+    void Edit_data(int pos, const char *name, int status, const char *type)
+    {
+        strcpy(m_gameList[pos].name,name);
+
+        strcpy(m_gameList[pos].type,type);
+
+        m_gameList[pos].status = status;
+
+        Write_data();
+    }
+
+    void Delete_data(int pos)
+    {
+        m_nMaxGames--;
+
+        for(int i = pos; i < m_nMaxGames; i++)
+        {
+            m_gameList[i] = m_gameList[i + 1];
+        }
+
+        Write_data();
+    }
+
+    int Read_data()
+    {
+        FILE *istream = fopen(m_fileName, "rb");
+
+        if (istream == 0)
+
+            return false;
+
+        char buf[4096];
+
+        int nTotalDataRead = 0;
+
+        for(int i = 0; i < Max_size; i++)
+        {
+            if(feof(istream))
+                break;
+
+            int nBytesRead = fread(buf, 1, sizeof(Game), istream);
+
+            if(nBytesRead < sizeof(Game))
+                break;
+
+            char *p = reinterpret_cast<char*>(&m_gameList[i]);
+
+            memcpy(p, buf, sizeof(Game));
+
+            nTotalDataRead++;
+        }
+
+        fclose(istream);
+
+        m_nMaxGames = nTotalDataRead;
+
+        return nTotalDataRead;
+    }
+
+    int Write_data()
+    {
+        FILE *ostream = fopen(m_fileName, "wb");
+
+        if (ostream == 0)
+            return false;
+
+        int nTotalDataWritten = 0;
+
+        char buf[4096];
+
+        for(int i = 0; i < m_nMaxGames; i++)
+        {
+            fwrite((char*)&m_gameList[i], 1, sizeof(Game), ostream);
+
+            nTotalDataWritten++;
+        }
+        fclose(ostream);
+
+        return nTotalDataWritten;
+    }
+};
+
 
 void gotoxy(int x, int y)
 {
