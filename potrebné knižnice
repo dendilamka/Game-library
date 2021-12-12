@@ -1,0 +1,7 @@
+#include <conio.h> // funkcia getch()
+#include <iostream>
+#include <windows.h> 
+#include <stdio.h>
+#include <string.h>
+#include <tchar.h>
+#pragma pack(2)
