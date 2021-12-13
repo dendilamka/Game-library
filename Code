@@ -162,11 +162,11 @@ int MainMenu()
 
     gotoxy(1,6);
 
-    std::cout << "*     2. Edit the game Data       *";
+    std::cout << "*     2. View the game Data       *";
 
     gotoxy(1,7);
 
-    std::cout << "*     3. View the game data       *";
+    std::cout << "*     3. Edit the game data       *";
 
     gotoxy(1,8);
 
@@ -257,5 +257,23 @@ void Input_data()
         else
             break;
     }
+}
+
+int _tmain(int argc, _TCHAR* argv[]) // main() v C++
+{
+    theGames.Read_data();
+
+    while(true)
+    {
+        int select = MainMenu();
+
+        switch(select)
+        {
+        case 1:
+            Input_data();
+            break;
+    };
+        }
+      return 0;
 }
 
