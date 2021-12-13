@@ -196,4 +196,66 @@ int MainMenu()
     return m;
 }
 
+void Input_data()
+{
+    while(1)
+    {
+        ::system("cls"); // prehľadnosť obrazovky
+
+        gotoxy(1,2);
+
+        std::cout << "Game-Library Database Application";
+
+        gotoxy(1,4);
+
+        std::cout << "**********************************";
+
+        gotoxy(1,5);
+
+        std::cout << "Name:                            *";
+
+        gotoxy(1,6);
+
+        std::cout << "Position:                        *";
+
+        gotoxy(1,7);
+
+        std::cout << "Type:                            *";
+
+        gotoxy(1,8);
+
+        std::cout << "**********************************";
+
+        gotoxy(7,5);
+
+        char name[50];
+        
+        std::cin >> name;
+
+        gotoxy(11,6);
+
+        int status;
+
+        std::cin >> status;
+
+        gotoxy(7,7);
+
+        char type[50];
+
+        std::cin >> type;
+
+        theGames.Add_data(name, status, type);
+
+        gotoxy(1,9);
+
+        std::cout << "Do you want to add another data(Y/N): ";
+
+        char ch = getch();
+
+        if(ch == 'Y' || ch == 'y')
+            continue;
+        else
+            break;
+    }
+}
 
