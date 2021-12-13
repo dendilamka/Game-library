@@ -133,6 +133,7 @@ struct Games
     }
 };
 
+Games theGames("C:\\Games.bin"); // Číta a Zapíše do binárnych súborov
 
 void gotoxy(int x, int y)
 {
@@ -142,7 +143,6 @@ void gotoxy(int x, int y)
 
     SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), ord);
 }
-
 
 int MainMenu()
 {
@@ -192,7 +192,8 @@ int MainMenu()
     if(m > 5 or m < 1){
         std::cout << "Invalid Entry, you have to use(1-5)!";
         return MainMenu();
-    }
-        
+    } 
     return m;
 }
+
+
