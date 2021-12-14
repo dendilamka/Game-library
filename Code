@@ -6,7 +6,6 @@
 #include <tchar.h>
 #pragma pack(2)
 
-
 struct Game
 {
 public:
@@ -16,7 +15,6 @@ public:
     long status;
 
     char type[50];
-
 };
 
 struct Games
@@ -150,7 +148,7 @@ int MainMenu()
 
     gotoxy(1,2);
 
-    std::cout << " Game-Library Database Application ";
+    std::cout << "[Game-Library Database Application]";
 
     gotoxy(1,4);
 
@@ -162,7 +160,7 @@ int MainMenu()
 
     gotoxy(1,6);
 
-    std::cout << "*     2. View the game Data       *";
+    std::cout << "*     2. View the game data       *";
 
     gotoxy(1,7);
 
@@ -192,7 +190,7 @@ int MainMenu()
     if(m > 5 or m < 1){
         std::cout << "Invalid Entry, you have to use(1-5)!";
         return MainMenu();
-    } 
+    }   
     return m;
 }
 
@@ -200,31 +198,31 @@ void Input_data()
 {
     while(1)
     {
-        ::system("cls"); // prehľadnosť obrazovky
+        ::system("cls");
 
         gotoxy(1,2);
 
-        std::cout << "Game-Library Database Application";
+        std::cout << "[Game-Library Database Application]";
 
         gotoxy(1,4);
 
-        std::cout << "**********************************";
+        std::cout << "***********************************";
 
         gotoxy(1,5);
 
-        std::cout << "Name:                            *";
+        std::cout << "Name:                             *";
 
         gotoxy(1,6);
 
-        std::cout << "Position:                        *";
+        std::cout << "Rating:                           *";
 
         gotoxy(1,7);
 
-        std::cout << "Type:                            *";
+        std::cout << "Type:                             *";
 
         gotoxy(1,8);
 
-        std::cout << "**********************************";
+        std::cout << "***********************************";
 
         gotoxy(7,5);
 
@@ -232,7 +230,7 @@ void Input_data()
         
         std::cin >> name;
 
-        gotoxy(11,6);
+        gotoxy(9,6);
 
         int status;
 
@@ -246,7 +244,7 @@ void Input_data()
 
         theGames.Add_data(name, status, type);
 
-        gotoxy(1,9);
+        gotoxy(1,10);
 
         std::cout << "Do you want to add another data(Y/N): ";
 
