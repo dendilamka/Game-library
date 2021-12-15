@@ -389,6 +389,41 @@ void Edit_data()
     }
 }
 
+
+void Delete_data()
+{
+    View_data();
+    
+    gotoxy(1,11);
+
+    std::cout << "Enter the ID you want to delete: ";
+
+    int m;
+
+    std::cin >> m;
+
+    if(m >= 1 && m <= theGames.m_nMaxGames)
+    {
+        theGames.Delete_data(m - 1);
+
+        gotoxy(1,11);
+
+        std::cout << "Data Deleted. press ENTER key to return!";
+
+        char ch = getch();
+    }
+
+    else
+    {   
+        gotoxy(1,11);
+        
+        std::cout << "Invalid Entry. press ENTER key to return!";
+        
+        char ch = getch();
+    }
+}
+
+
 int _tmain(int argc, _TCHAR* argv[]) // main() v C++
 {
     theGames.Read_data();
