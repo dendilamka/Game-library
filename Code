@@ -314,6 +314,81 @@ void View_data()
     gotoxy(1,pos++);
 }
 
+void Edit_data()
+{
+    View_data();
+
+    std::cout << "Enter the ID you want to edit: ";
+
+    int m;
+
+    std::cin >> m;
+
+    if(m >= 1 && m <= theGames.m_nMaxGames)
+    {
+        ::system("cls");
+
+        gotoxy(1,2);
+
+        std::cout << "[Game-Library Database Application] (Edit)";
+
+        gotoxy(1,4);
+
+        std::cout << "*****************************************";
+
+        gotoxy(1,5);
+
+        std::cout << "Name:                                   *";
+
+        gotoxy(1,6);
+
+        std::cout << "Rating:                                 *";
+
+        gotoxy(1,7);
+
+        std::cout << "Type:                                   *";
+
+        gotoxy(1,8);
+
+        std::cout << "*****************************************";
+
+        gotoxy(7,5);
+
+        char name[50];
+
+        std::cin >> name;
+
+        gotoxy(9,6);
+
+        int status;
+
+        std::cin >> status;
+
+        gotoxy(7,7);
+
+        char type[50];
+
+        std::cin >> type;
+
+        gotoxy(1,10);
+
+        std::cout << "Data Updated. press ENTER key to return!";
+
+        theGames.Edit_data(m - 1, name, status, type);       
+
+        char ch = getch();
+    }
+
+    else
+    {
+        gotoxy(1,12);
+
+        std::cout << "Invalid Entry. press ENTER key to return!";
+
+        char ch = getch();
+    }
+}
+
 int _tmain(int argc, _TCHAR* argv[]) // main() v C++
 {
     theGames.Read_data();
@@ -337,6 +412,10 @@ int _tmain(int argc, _TCHAR* argv[]) // main() v C++
             char ch = getch();
             }
             break;
+            
+        case 3:
+            Edit_data();
+            break;           
                 
     };
         }
